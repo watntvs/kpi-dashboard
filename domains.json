@@ -1,0 +1,20 @@
+[
+  { "domainNumber": 1, "domainTitle": "حسابداری مالی", "file": "domain_01.json" },
+  { "domainNumber": 2, "domainTitle": "حسابداری صنعتی (بهای تمام‌شده)", "file": "domain_02.json" },
+  { "domainNumber": 3, "domainTitle": "حسابداری مدیریت", "file": "domain_03.json" },
+  { "domainNumber": 4, "domainTitle": "مالیات و الزامات قانونی", "file": "domain_04.json" },
+  { "domainNumber": 5, "domainTitle": "خزانه‌داری و مدیریت نقدینگی", "file": "domain_05.json" },
+  { "domainNumber": 6, "domainTitle": "بودجه‌ریزی و کنترل بودجه", "file": "domain_06.json" },
+  { "domainNumber": 7, "domainTitle": "برنامه‌ریزی مالی و سرمایه‌گذاری", "file": "domain_07.json" },
+  { "domainNumber": 8, "domainTitle": "گزارش‌گیری مدیریتی و داشبوردها", "file": "domain_08.json" },
+  { "domainNumber": 9, "domainTitle": "تحلیل داده‌های مالی و هوش تجاری", "file": "domain_09.json" },
+  { "domainNumber": 10, "domainTitle": "کنترل داخلی و ریسک مالی", "file": "domain_10.json" },
+  { "domainNumber": 11, "domainTitle": "مدیریت دارایی‌ها و اموال", "file": "domain_11.json" },
+  { "domainNumber": 12, "domainTitle": "مدیریت قراردادهای مالی", "file": "domain_12.json" },
+  { "domainNumber": 13, "domainTitle": "سفارشات، خرید و تأمین مالی", "file": "domain_13.json" },
+  { "domainNumber": 14, "domainTitle": "مدیریت انبار و موجودی کالا", "file": "domain_14.json" },
+  { "domainNumber": 15, "domainTitle": "لجستیک و حمل‌ونقل", "file": "domain_15.json" },
+  { "domainNumber": 16, "domainTitle": "مدیریت تولید (از منظر مالی)", "file": "domain_16.json" },
+  { "domainNumber": 17, "domainTitle": "منابع انسانی مالی", "file": "domain_17.json" },
+  { "domainNumber": 18, "domainTitle": "فروش و بازاریابی (از منظر مالی)", "file": "domain_18.json" }
+]
