@@ -1,23 +1,42 @@
 {
-  "domain": "حسابداری صنعتی",
-  "performance": [
-    { "id": "productcost", "title": "سهم هر محصول از هزینه‌های تولید (PC)" },
-    { "id": "grossprofitproduct", "title": "سود ناخالص هر محصول (GP/P)" },
-    { "id": "directcostratio", "title": "نسبت هزینه مستقیم به کل هزینه تولید (DC/TC)" },
-    { "id": "indirectcostratio", "title": "نسبت هزینه غیرمستقیم به کل هزینه تولید (IC/TC)" },
-    { "id": "costcenterweight", "title": "سهم هر مرکز هزینه از کل هزینه‌ها (CC/TC)" },
-    { "id": "lineprofitability", "title": "سودآوری هر خط تولید (PLP)" },
-    { "id": "materialcostratio", "title": "نسبت هزینه مواد اولیه به کل هزینه تولید (MC/TC)" },
-    { "id": "laborcostratio", "title": "نسبت هزینه دستمزد مستقیم به کل هزینه تولید (DL/TC)" }
-  ],
-  "control": [
-    { "id": "productionbudgetvar", "title": "انحراف از بودجه تولید (PBV)" },
-    { "id": "materialratevar", "title": "انحراف نرخ مواد اولیه (MRV)" },
-    { "id": "materialquantityvar", "title": "انحراف مصرف مواد اولیه (MQV)" },
-    { "id": "laborratevar", "title": "انحراف نرخ دستمزد مستقیم (DRV)" },
-    { "id": "laborproductivityvar", "title": "انحراف بهره‌وری نیروی انسانی (LEV)" },
-    { "id": "overheadvar", "title": "انحراف هزینه سربار (OVV)" },
-    { "id": "unitcostvar", "title": "انحراف هزینه هر واحد محصول (UCV)" },
-    { "id": "costcentervar", "title": "انحراف هزینه مراکز هزینه (CCV)" }
+  "subgroups": [
+    {
+      "title": "🔷 شاخص‌های عملکردی",
+      "color": "green",
+      "categories": [
+        {
+          "title": "تحلیل هزینه",
+          "items": [
+            { "id": "productcost", "title": "سهم هر محصول از هزینه‌های تولید (PC) – Product Cost Share" },
+            { "id": "grossprofitproduct", "title": "سود ناخالص هر محصول (GP/P) – Gross Profit per Product" },
+            { "id": "directcostratio", "title": "نسبت هزینه مستقیم به کل هزینه تولید (DC/TC) – Direct Cost Ratio" },
+            { "id": "indirectcostratio", "title": "نسبت هزینه غیرمستقیم به کل هزینه تولید (IC/TC) – Indirect Cost Ratio" },
+            { "id": "costcenterweight", "title": "سهم هر مرکز هزینه از کل هزینه‌ها (CC/TC) – Cost Center Weight" },
+            { "id": "lineprofitability", "title": "سودآوری هر خط تولید (PLP) – Production Line Profitability" },
+            { "id": "materialcostratio", "title": "نسبت هزینه مواد اولیه به کل هزینه تولید (MC/TC) – Material Cost Ratio" },
+            { "id": "laborcostratio", "title": "نسبت هزینه دستمزد مستقیم به کل هزینه تولید (DL/TC) – Direct Labor Cost Ratio" }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "🔴 شاخص‌های کنترلی",
+      "color": "red",
+      "categories": [
+        {
+          "title": "انحرافات تولیدی",
+          "items": [
+            { "id": "productionbudgetvar", "title": "انحراف از بودجه تولید (PBV) – Production Budget Variance" },
+            { "id": "materialratevar", "title": "انحراف نرخ مواد اولیه (MRV) – Material Rate Variance" },
+            { "id": "materialquantityvar", "title": "انحراف مصرف مواد اولیه (MQV) – Material Quantity Variance" },
+            { "id": "laborratevar", "title": "انحراف نرخ دستمزد مستقیم (DRV) – Direct Labor Rate Variance" },
+            { "id": "laborproductivityvar", "title": "انحراف بهره‌وری نیروی انسانی (LEV) – Labor Efficiency Variance" },
+            { "id": "overheadvar", "title": "انحراف هزینه سربار (OVV) – Overhead Variance" },
+            { "id": "unitcostvar", "title": "انحراف هزینه هر واحد محصول (UCV) – Unit Cost Variance" },
+            { "id": "costcentervar", "title": "انحراف هزینه مراکز هزینه (CCV) – Cost Center Variance" }
+          ]
+        }
+      ]
+    }
   ]
 }
