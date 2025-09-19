@@ -1,0 +1,139 @@
+[
+  {
+    "domainNumber": 1,
+    "domainTitle": "حسابداری مالی",
+    "subgroups": [
+      {
+        "title": "شاخص‌های عملکردی",
+        "categories": [
+          {
+            "title": "سودآوری",
+            "items": [
+              { "id": "grossmargin", "title": "حاشیه سود ناخالص" },
+              { "id": "opmargin", "title": "حاشیه سود عملیاتی" },
+              { "id": "netmargin", "title": "حاشیه سود خالص" }
+            ]
+          },
+          {
+            "title": "نقدینگی",
+            "items": [
+              { "id": "currentratio", "title": "نسبت جاری" },
+              { "id": "quickratio", "title": "نسبت آنی" }
+            ]
+          },
+          {
+            "title": "ارزش‌گذاری",
+            "items": [
+              { "id": "pe", "title": "P/E" },
+              { "id": "pb", "title": "P/B" }
+            ]
+          },
+          {
+            "title": "گردش مالی",
+            "items": [
+              { "id": "assettotal", "title": "گردش دارایی کل" },
+              { "id": "assetcurrent", "title": "گردش دارایی جاری" }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "شاخص‌های کنترل پرسنل",
+        "categories": [
+          {
+            "title": "پرسنلی",
+            "items": [
+              { "id": "salaryeff", "title": "بهره‌وری حقوق و دستمزد" },
+              { "id": "staffcost", "title": "نسبت هزینه پرسنل به فروش" }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "domainNumber": 2,
+    "domainTitle": "حسابداری مدیریت",
+    "subgroups": []
+  },
+  {
+    "domainNumber": 3,
+    "domainTitle": "بودجه",
+    "subgroups": []
+  },
+  {
+    "domainNumber": 4,
+    "domainTitle": "کنترل داخلی",
+    "subgroups": []
+  },
+  {
+    "domainNumber": 5,
+    "domainTitle": "گزارشگری مالی",
+    "subgroups": []
+  },
+  {
+    "domainNumber": 6,
+    "domainTitle": "منابع انسانی",
+    "subgroups": []
+  },
+  {
+    "domainNumber": 7,
+    "domainTitle": "تولید",
+    "subgroups": []
+  },
+  {
+    "domainNumber": 8,
+    "domainTitle": "تدارکات",
+    "subgroups": []
+  },
+  {
+    "domainNumber": 9,
+    "domainTitle": "انبار",
+    "subgroups": []
+  },
+  {
+    "domainNumber": 10,
+    "domainTitle": "فروش",
+    "subgroups": []
+  },
+  {
+    "domainNumber": 11,
+    "domainTitle": "ارتباط با مشتری",
+    "subgroups": []
+  },
+  {
+    "domainNumber": 12,
+    "domainTitle": "مدیریت دانش",
+    "subgroups": []
+  },
+  {
+    "domainNumber": 13,
+    "domainTitle": "ساختار سازمانی",
+    "subgroups": []
+  },
+  {
+    "domainNumber": 14,
+    "domainTitle": "تحلیل مالی",
+    "subgroups": []
+  },
+  {
+    "domainNumber": 15,
+    "domainTitle": "مستندسازی فرآیندها",
+    "subgroups": []
+  },
+  {
+    "domainNumber": 16,
+    "domainTitle": "کنترل کیفیت",
+    "subgroups": []
+  },
+  {
+    "domainNumber": 17,
+    "domainTitle": "لجستیک و حمل‌ونقل",
+    "subgroups": []
+  },
+  {
+    "domainNumber": 18,
+    "domainTitle": "برنامه‌ریزی استراتژیک",
+    "subgroups": []
+  }
+]

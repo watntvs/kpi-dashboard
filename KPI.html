@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>شاخص‌های مدیریتی سازمان</title>
+  <style>
+    body {
+      font-family: Vazirmatn, sans-serif;
+      background-color: #f9f9f9;
+      direction: rtl;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      color: #007f00;
+      margin-bottom: 30px;
+    }
+    details {
+      margin-bottom: 10px;
+    }
+    summary {
+      font-weight: bold;
+      font-size: 18px;
+      cursor: pointer;
+      padding: 8px;
+      background-color: #e8f5e9;
+      border-right: 5px solid #007f00;
+      border-radius: 6px;
+    }
+    ul {
+      list-style: none;
+      padding-right: 20px;
+    }
+    li {
+      margin-bottom: 6px;
+    }
+    .subgroup-title {
+      color: #007f00;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+<h1>📘 شاخص‌های مدیریتی سازمان</h1>
+<div id="dashboard"></div>
+
+<script>
+  fetch("data.json")
+    .then(res => res.json())
+    .then(domains => {
+      const container = document.getElementById("dashboard");
+
+      domains.forEach(domain => {
+        const details = document.createElement("details");
+        const summary = document.createElement("summary");
+        summary.textContent = `${domain.domainNumber}. ${domain.domainTitle}`;
+        details.appendChild(summary);
+
+        domain.subgroups.forEach(sub => {
+          const subgroupTitle = document.createElement("div");
+          subgroupTitle.className = "subgroup-title";
+          subgroupTitle.textContent = sub.title;
+          details.appendChild(subgroupTitle);
+
+          sub.categories.forEach(cat => {
+            const catItem = document.createElement("li");
+            catItem.textContent = cat.title;
+
+            const itemList = document.createElement("ul");
+            cat.items.forEach(item => {
+              const li = document.createElement("li");
+              const a = document.createElement("a");
+              a.href = `#${item.id}`;
+              a.textContent = item.title;
+              li.appendChild(a);
+              itemList.appendChild(li);
+            });
+
+            const catWrapper = document.createElement("ul");
+            catWrapper.appendChild(catItem);
+            catWrapper.appendChild(itemList);
+            details.appendChild(catWrapper);
+          });
+        });
+
+        container.appendChild(details);
+      });
+
+      // فقط یک حوزه در لحظه باز باشه
+      const allDetails = document.querySelectorAll("details");
+      allDetails.forEach(detail => {
+        detail.addEventListener("click", function () {
+          allDetails.forEach(other => {
+            if (other !== detail) {
+              other.removeAttribute("open");
+            }
+          });
+        });
+      });
+    });
+</script>
+
+</body>
+</html>
