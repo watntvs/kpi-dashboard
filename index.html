@@ -17,8 +17,6 @@
     }
     details {
       margin-bottom: 10px;
-      border: none;
-      background: none;
     }
     summary {
       font-weight: bold;
@@ -44,7 +42,6 @@
       font-size: 20px;
     }
 
-    /* Modal styles */
     .modal {
       display: none;
       position: fixed;
@@ -54,12 +51,14 @@
     }
     .modal-content {
       background-color: #fff;
-      margin: 10% auto;
+      margin: 5% auto;
       padding: 20px;
       width: 80%;
       border-radius: 10px;
       box-shadow: 0 0 20px rgba(0,0,0,0.3);
       font-family: Vazirmatn, sans-serif;
+      max-height: 90vh;
+      overflow-y: auto;
     }
     .close-button {
       float: left;
@@ -75,6 +74,31 @@
       border-radius: 5px;
       cursor: pointer;
     }
+    .formula-box {
+      background-color: #f9f9f9;
+      padding: 10px;
+      border-right: 4px solid #007f00;
+      border-radius: 4px;
+    }
+    .example-box {
+      background-color: #fff8e1;
+      padding: 12px;
+      border-left: 4px solid #ff9800;
+      border-radius: 4px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+    th, td {
+      text-align: right;
+      padding: 8px;
+      border-bottom: 1px solid #ccc;
+    }
+    th {
+      background-color: #e0f0ff;
+    }
   </style>
 </head>
 <body>
@@ -82,15 +106,10 @@
 <h1>📘 شاخص‌های معاونت مالی</h1>
 <div id="dashboard"></div>
 
-<!-- Modal for indicator details -->
 <div id="indicatorModal" class="modal">
   <div class="modal-content">
     <span class="close-button" onclick="closeModal()">✖</span>
-    <h2 id="indicatorTitle">عنوان شاخص</h2>
-    <p id="indicatorDescription">📘 توضیح شاخص</p>
-    <p><strong>فرمول:</strong> <span id="indicatorFormula">...</span></p>
-    <p><strong>واحد اندازه‌گیری:</strong> <span id="indicatorUnit">...</span></p>
-    <p><strong>منبع داده:</strong> <span id="indicatorSource">...</span></p>
+    <div id="indicatorContent"></div>
     <button id="backButton" onclick="closeModal()">🔙 بازگشت</button>
   </div>
 </div>
@@ -163,11 +182,38 @@
   }
 
   function showIndicator(item) {
-    document.getElementById("indicatorTitle").textContent = item.title;
-    document.getElementById("indicatorDescription").textContent = item.description || "توضیحی ثبت نشده است.";
-    document.getElementById("indicatorFormula").textContent = item.formula || "نامشخص";
-    document.getElementById("indicatorUnit").textContent = item.unit || "نامشخص";
-    document.getElementById("indicatorSource").textContent = item.source || "نامشخص";
+    const container = document.getElementById("indicatorContent");
+    container.innerHTML = `
+      <h2>📊 ${item.title}</h2>
+      <p><strong>🔹 تعریف:</strong> ${item.definition || item.description || "توضیحی ثبت نشده است."}</p>
+      <hr>
+      <p><strong>📐 فرمول محاسبه:</strong></p>
+      <p class="formula-box">${item.formula || "نامشخص"}</p>
+      <hr>
+      <p><strong>📦 اجزای ورودی:</strong></p>
+      <ul>${(item.inputs || []).map(i => `<li>${i}</li>`).join("")}</ul>
+      <hr>
+      <p><strong>📊 واحد اندازه‌گیری:</strong> ${item.unit || "نامشخص"}</p>
+      <hr>
+      ${item.interpretation ? `
+        <p><strong>🎯 تفسیر عدد شاخص:</strong></p>
+        <table>
+          <tr><th>مقدار</th><th>تفسیر</th></tr>
+          ${item.interpretation.map(row => `<tr><td>${row.range}</td><td>${row.meaning}</td></tr>`).join("")}
+        </table>
+        <hr>
+      ` : ""}
+      ${item.example ? `
+        <p><strong>📈 مثال عددی:</strong></p>
+        <div class="example-box">
+          ${Object.entries(item.example.values).map(([k,v]) => `• ${k} = ${v}<br>`).join("")}
+          <br><br>${item.example.calculation}
+        </div>
+        <hr>
+      ` : ""}
+      <p><strong>📂 روش استخراج داده‌ها:</strong></p>
+      <ul>${(item.source || []).map(s => `<li>${s}</li>`).join("")}</ul>
+    `;
     document.getElementById("indicatorModal").style.display = "block";
   }
 
