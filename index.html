@@ -84,9 +84,11 @@
                 .then(res => res.json())
                 .then(data => {
                   data.subgroups.forEach(sub => {
-                    const subgroupTitle = document.createElement("div");
-                    subgroupTitle.className = "subgroup-title";
-                    subgroupTitle.textContent = sub.title;
+                      const subgroupTitle = document.createElement("div");
+                      subgroupTitle.className = "subgroup-title";
+                      subgroupTitle.textContent = sub.title;
+                      subgroupTitle.style.color = sub.color || "#007f00"; // سبز پیش‌فرض
+
                     details.appendChild(subgroupTitle);
 
                     sub.categories.forEach(cat => {
@@ -129,3 +131,4 @@
 
 </body>
 </html>
+
