@@ -2,7 +2,7 @@
 <html lang="fa" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <title>شاخص‌های مدیریتی سازمان</title>
+  <title>📘 داشبورد شاخص‌های مدیریتی</title>
   <style>
     body {
       font-family: Vazirmatn, sans-serif;
@@ -17,15 +17,17 @@
     }
     details {
       margin-bottom: 10px;
+      border: none;
+      background: none;
     }
     summary {
       font-weight: bold;
       font-size: 18px;
       cursor: pointer;
-      padding: 8px;
-      background-color: #e8f5e9;
-      border-right: 5px solid #007f00;
-      border-radius: 6px;
+      padding: 4px 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
     ul {
       list-style: none;
@@ -39,6 +41,9 @@
       margin-top: 10px;
       font-weight: bold;
     }
+    .domain-icon {
+      font-size: 20px;
+    }
   </style>
 </head>
 <body>
@@ -47,15 +52,38 @@
 <div id="dashboard"></div>
 
 <script>
+  const domainIcons = {
+    "حسابداری مالی": "📊",
+    "حسابداری مدیریت": "📈",
+    "بودجه": "💰",
+    "کنترل داخلی": "🛡️",
+    "گزارشگری مالی": "📋",
+    "منابع انسانی": "👥",
+    "تولید": "🏭",
+    "تدارکات": "📦",
+    "انبار": "📦",
+    "فروش": "🛒",
+    "ارتباط با مشتری": "📞",
+    "مدیریت دانش": "📚",
+    "ساختار سازمانی": "🏢",
+    "تحلیل مالی": "🔍",
+    "مستندسازی فرآیندها": "📝",
+    "کنترل کیفیت": "✅",
+    "لجستیک و حمل‌ونقل": "🚚",
+    "برنامه‌ریزی استراتژیک": "🎯"
+  };
+
   fetch("data.json")
     .then(res => res.json())
-    .then(domains => {
+    .then(data => {
       const container = document.getElementById("dashboard");
 
-      domains.forEach(domain => {
+      data.forEach(domain => {
         const details = document.createElement("details");
         const summary = document.createElement("summary");
-        summary.textContent = `${domain.domainNumber}. ${domain.domainTitle}`;
+
+        const icon = domainIcons[domain.domainTitle] || "📁";
+        summary.innerHTML = `<span class="domain-icon">${icon}</span> ${domain.domainNumber}. ${domain.domainTitle}`;
         details.appendChild(summary);
 
         domain.subgroups.forEach(sub => {
@@ -88,7 +116,6 @@
         container.appendChild(details);
       });
 
-      // فقط یک حوزه در لحظه باز باشه
       const allDetails = document.querySelectorAll("details");
       allDetails.forEach(detail => {
         detail.addEventListener("click", function () {
@@ -99,6 +126,10 @@
           });
         });
       });
+    })
+    .catch(err => {
+      document.getElementById("dashboard").innerHTML = "<p style='color:red;'>❌ خطا در بارگذاری داده‌ها. لطفاً مطمئن شوید فایل data.json در مسیر درست قرار دارد.</p>";
+      console.error("خطا در بارگذاری JSON:", err);
     });
 </script>
 
