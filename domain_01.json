@@ -1,0 +1,24 @@
+{
+  "subgroups": [
+    {
+      "title": "شاخص‌های عملکردی",
+      "categories": [
+        {
+          "title": "سودآوری",
+          "items": [
+            { "id": "grossmargin", "title": "حاشیه سود ناخالص" },
+            { "id": "opmargin", "title": "حاشیه سود عملیاتی" },
+            { "id": "netmargin", "title": "حاشیه سود خالص" }
+          ]
+        },
+        {
+          "title": "نقدینگی",
+          "items": [
+            { "id": "currentratio", "title": "نسبت جاری" },
+            { "id": "quickratio", "title": "نسبت آنی" }
+          ]
+        }
+      ]
+    }
+  ]
+}
