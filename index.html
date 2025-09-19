@@ -2,7 +2,7 @@
 <html lang="fa" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <title>📘 داشبورد شاخص‌های مدیریتی</title>
+  <title>📘 داشبورد شاخص‌های معاونت مالی</title>
   <style>
     body {
       font-family: Vazirmatn, sans-serif;
@@ -52,87 +52,80 @@
 <div id="dashboard"></div>
 
 <script>
-  const domainIcons = {
-    "حسابداری مالی": "📊",
-    "حسابداری مدیریت": "📈",
-    "بودجه": "💰",
-    "کنترل داخلی": "🛡️",
-    "گزارشگری مالی": "📋",
-    "منابع انسانی": "👥",
-    "تولید": "🏭",
-    "تدارکات": "📦",
-    "انبار": "📦",
-    "فروش": "🛒",
-    "ارتباط با مشتری": "📞",
-    "مدیریت دانش": "📚",
-    "ساختار سازمانی": "🏢",
-    "تحلیل مالی": "🔍",
-    "مستندسازی فرآیندها": "📝",
-    "کنترل کیفیت": "✅",
-    "لجستیک و حمل‌ونقل": "🚚",
-    "برنامه‌ریزی استراتژیک": "🎯"
-  };
+  let icons = {};
 
-  fetch("data.json")
+  // بارگذاری آیکون‌ها
+  fetch("icons.json")
     .then(res => res.json())
     .then(data => {
-      const container = document.getElementById("dashboard");
+      icons = data;
+      loadDomains();
+    });
 
-      data.forEach(domain => {
-        const details = document.createElement("details");
-        const summary = document.createElement("summary");
+  // بارگذاری لیست حوزه‌ها
+  function loadDomains() {
+    fetch("domains.json")
+      .then(res => res.json())
+      .then(domains => {
+        const container = document.getElementById("dashboard");
 
-        const icon = domainIcons[domain.domainTitle] || "📁";
-        summary.innerHTML = `<span class="domain-icon">${icon}</span> ${domain.domainNumber}. ${domain.domainTitle}`;
-        details.appendChild(summary);
+        domains.forEach(domain => {
+          const details = document.createElement("details");
+          const summary = document.createElement("summary");
 
-        domain.subgroups.forEach(sub => {
-          const subgroupTitle = document.createElement("div");
-          subgroupTitle.className = "subgroup-title";
-          subgroupTitle.textContent = sub.title;
-          details.appendChild(subgroupTitle);
+          const icon = icons[domain.domainTitle] || "📁";
+          summary.innerHTML = `<span class="domain-icon">${icon}</span> ${domain.domainNumber}. ${domain.domainTitle}`;
+          details.appendChild(summary);
 
-          sub.categories.forEach(cat => {
-            const catItem = document.createElement("li");
-            catItem.textContent = cat.title;
+          // بارگذاری شاخص‌های هر حوزه هنگام باز شدن
+          summary.addEventListener("click", () => {
+            if (!details.dataset.loaded) {
+              fetch(domain.file)
+                .then(res => res.json())
+                .then(data => {
+                  data.subgroups.forEach(sub => {
+                    const subgroupTitle = document.createElement("div");
+                    subgroupTitle.className = "subgroup-title";
+                    subgroupTitle.textContent = sub.title;
+                    details.appendChild(subgroupTitle);
 
-            const itemList = document.createElement("ul");
-            cat.items.forEach(item => {
-              const li = document.createElement("li");
-              const a = document.createElement("a");
-              a.href = `#${item.id}`;
-              a.textContent = item.title;
-              li.appendChild(a);
-              itemList.appendChild(li);
-            });
+                    sub.categories.forEach(cat => {
+                      const catItem = document.createElement("li");
+                      catItem.textContent = cat.title;
 
-            const catWrapper = document.createElement("ul");
-            catWrapper.appendChild(catItem);
-            catWrapper.appendChild(itemList);
-            details.appendChild(catWrapper);
-          });
-        });
+                      const itemList = document.createElement("ul");
+                      cat.items.forEach(item => {
+                        const li = document.createElement("li");
+                        const a = document.createElement("a");
+                        a.href = `#${item.id}`;
+                        a.textContent = item.title;
+                        li.appendChild(a);
+                        itemList.appendChild(li);
+                      });
 
-        container.appendChild(details);
-      });
-
-      const allDetails = document.querySelectorAll("details");
-      allDetails.forEach(detail => {
-        detail.addEventListener("click", function () {
-          allDetails.forEach(other => {
-            if (other !== detail) {
-              other.removeAttribute("open");
+                      const catWrapper = document.createElement("ul");
+                      catWrapper.appendChild(catItem);
+                      catWrapper.appendChild(itemList);
+                      details.appendChild(catWrapper);
+                    });
+                  });
+                  details.dataset.loaded = "true";
+                })
+                .catch(err => {
+                  const errorMsg = document.createElement("p");
+                  errorMsg.style.color = "red";
+                  errorMsg.textContent = "❌ خطا در بارگذاری شاخص‌های این حوزه.";
+                  details.appendChild(errorMsg);
+                  console.error("خطا در بارگذاری فایل حوزه:", err);
+                });
             }
           });
+
+          container.appendChild(details);
         });
       });
-    })
-    .catch(err => {
-      document.getElementById("dashboard").innerHTML = "<p style='color:red;'>❌ خطا در بارگذاری داده‌ها. لطفاً مطمئن شوید فایل data.json در مسیر درست قرار دارد.</p>";
-      console.error("خطا در بارگذاری JSON:", err);
-    });
+  }
 </script>
 
 </body>
 </html>
-
