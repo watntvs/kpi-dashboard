@@ -41,7 +41,6 @@
     .domain-icon {
       font-size: 20px;
     }
-
     .modal {
       display: none;
       position: fixed;
@@ -139,6 +138,12 @@
           details.appendChild(summary);
 
           summary.addEventListener("click", () => {
+            // بستن سایر دامین‌ها
+            document.querySelectorAll("#dashboard details").forEach(d => {
+              if (d !== details) d.removeAttribute("open");
+            });
+
+            // بارگذاری محتوا فقط یک‌بار
             if (!details.dataset.loaded) {
               fetch(domain.file)
                 .then(res => res.json())
