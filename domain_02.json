@@ -1,0 +1,23 @@
+{
+  "domain": "حسابداری صنعتی",
+  "performance": [
+    { "id": "productcost", "title": "سهم هر محصول از هزینه‌های تولید (PC)" },
+    { "id": "grossprofitproduct", "title": "سود ناخالص هر محصول (GP/P)" },
+    { "id": "directcostratio", "title": "نسبت هزینه مستقیم به کل هزینه تولید (DC/TC)" },
+    { "id": "indirectcostratio", "title": "نسبت هزینه غیرمستقیم به کل هزینه تولید (IC/TC)" },
+    { "id": "costcenterweight", "title": "سهم هر مرکز هزینه از کل هزینه‌ها (CC/TC)" },
+    { "id": "lineprofitability", "title": "سودآوری هر خط تولید (PLP)" },
+    { "id": "materialcostratio", "title": "نسبت هزینه مواد اولیه به کل هزینه تولید (MC/TC)" },
+    { "id": "laborcostratio", "title": "نسبت هزینه دستمزد مستقیم به کل هزینه تولید (DL/TC)" }
+  ],
+  "control": [
+    { "id": "productionbudgetvar", "title": "انحراف از بودجه تولید (PBV)" },
+    { "id": "materialratevar", "title": "انحراف نرخ مواد اولیه (MRV)" },
+    { "id": "materialquantityvar", "title": "انحراف مصرف مواد اولیه (MQV)" },
+    { "id": "laborratevar", "title": "انحراف نرخ دستمزد مستقیم (DRV)" },
+    { "id": "laborproductivityvar", "title": "انحراف بهره‌وری نیروی انسانی (LEV)" },
+    { "id": "overheadvar", "title": "انحراف هزینه سربار (OVV)" },
+    { "id": "unitcostvar", "title": "انحراف هزینه هر واحد محصول (UCV)" },
+    { "id": "costcentervar", "title": "انحراف هزینه مراکز هزینه (CCV)" }
+  ]
+}
