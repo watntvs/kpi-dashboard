@@ -2,7 +2,7 @@
   { "domainNumber": 1, "domainTitle": "حسابداری مالی", "file": "domain_01.json" },
   { "domainNumber": 2, "domainTitle": "حسابداری صنعتی (بهای تمام‌شده)", "file": "domain_02.json" },
   { "domainNumber": 3, "domainTitle": "حسابداری مدیریت", "file": "domain_03.json" },
-  { "domainNumber": 4, "domainTitle": "مالیات و الزامات قانونی", "file": "domain_04.json" },
+  { "domainNumber": 4, "domainTitle": "مالیات و الزامات قانونی", "file": "domain_03.json" },
   { "domainNumber": 5, "domainTitle": "خزانه‌داری و مدیریت نقدینگی", "file": "domain_05.json" },
   { "domainNumber": 6, "domainTitle": "بودجه‌ریزی و کنترل بودجه", "file": "domain_06.json" },
   { "domainNumber": 7, "domainTitle": "برنامه‌ریزی مالی و سرمایه‌گذاری", "file": "domain_07.json" },
